@@ -1,0 +1,14 @@
+Add this string to your functions file in WordPress when you want to use a custom registration code in the registraion feil of ultimate member
+
+
+function um_custom_validate_validate_code( $args ) {
+	if ( isset( $args['Reg_code'] ) &&  $args['Reg_code'] != 'the code goes here' ) {
+		UM()->form()->add_error( 'Reg_code', 'Your code is not correct.' );
+	}
+}
+add_action('um_submit_form_errors_hook_', 'um_custom_validate_validate_code', 999, 1);
+
+after saving, go to ultimate member form editor and create a field named: Reg_code
+add the cutom validation named: validate_code
+
+save your work
